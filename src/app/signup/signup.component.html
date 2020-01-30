@@ -1,0 +1,94 @@
+<form [formGroup]="signupForm">
+        <div class="container">
+            <div class="row justify-content-md-center">
+            <div class="col-md-offset-3 col-md-6">
+                    <div class="row">
+                            <mat-form-field class="wide">
+                                <input matInput placeholder="Name" formControlName="name">
+                                <mat-error *ngIf="signupForm.controls.name.hasError('required')">
+                                    Name is <strong>required</strong>
+                                </mat-error>
+                                <mat-error *ngIf="!signupForm.controls.name.hasError('required') &&
+                                        signupForm.controls.name.hasError('pattern')">
+                                    Please enter a valid Name
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                <div class="row">
+                    <mat-form-field class="wide">
+                        <input matInput placeholder="Username" formControlName="username">
+                        <mat-error *ngIf="signupForm.controls.username.hasError('required')">
+                            Username is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="!signupForm.controls.username.hasError('required') &&
+                                signupForm.controls.username.hasError('pattern')">
+                            Please enter a valid Username
+                        </mat-error>
+                        <mat-error *ngIf="!signupForm.controls.username.hasError('required') && signupForm.controls.username.hasError('maxlength')">
+                                Username must be less than 15 characters.
+                        </mat-error>
+                        <mat-error *ngIf="!signupForm.controls.username.hasError('required') && signupForm.controls.username.hasError('minlength')">
+                                Username must be more than 4 characters.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                        <mat-form-field class="wide">
+                        <input matInput type="password" placeholder="Password" formControlName="password">
+                        <mat-error *ngIf="signupForm.controls.password.hasError('required')">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="!signupForm.controls.password.hasError('required') &&
+                                signupForm.controls.password.hasError('pattern')">
+                            Please enter a valid Password
+                        </mat-error>
+                        <mat-error *ngIf="signupForm.controls.password.hasError('maxlength')">
+                                Password must be less than 15 characters.
+                        </mat-error>
+                        <mat-error *ngIf="signupForm.controls.password.hasError('minlength')">
+                                Password must be less than 4 characters.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                        <mat-form-field class="wide">
+                            <input type="number" matInput placeholder="Phone number" formControlName="phonenumber">
+                            <mat-error *ngIf="signupForm.controls.phonenumber.hasError('required')">
+                                    Phone Number <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="!signupForm.controls.phonenumber.hasError('required') &&
+                                    signupForm.controls.phonenumber.hasError('pattern')">
+                                Please enter a valid Phone Number
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                            <mat-form-field class="wide">
+                                <input type="number" matInput placeholder="Pincode" formControlName="pincode">
+                                <mat-error *ngIf="signupForm.controls.pincode.hasError('required')">
+                                        Pincode <strong>required</strong>
+                                </mat-error>
+                                <mat-error *ngIf="!signupForm.controls.pincode.hasError('required') &&
+                                        signupForm.controls.pincode.hasError('pattern')">
+                                    Please enter a valid Pincode
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button mat-raised-button color="primary" (click)="register()">Register</button>
+                    </div>
+                    <div class="col-md-4">
+                            <button mat-raised-button color="primary" (click)="login()">Login</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                         <div *ngIf="signAccepted" style="color: green">{{signupMsg}}</div>
+                         <div *ngIf="signRejected" style="color: red">{{signupMsg}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </form>

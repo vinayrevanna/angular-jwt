@@ -1,0 +1,37 @@
+<form [formGroup]="loginForm">
+    <div class="container">
+        <div class="row justify-content-md-center">
+        <div class="col-md-offset-3 col-md-6 pt-5">
+            <div class="row">
+                <mat-form-field class="wide">
+                    <input matInput placeholder="Username" formControlName="username">
+                    <mat-error *ngIf="loginForm.controls.username.hasError('required')">
+                        Username is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="!loginForm.controls.username.hasError('required') &&
+                            loginForm.controls.username.hasError('pattern')">
+                        Please enter a valid Username
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                    <mat-form-field class="wide">
+                    <input type="password" matInput placeholder="Password" formControlName="password" maxlength="15">
+                    <mat-error *ngIf="loginForm.controls.password.hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <button mat-raised-button color="primary" (click)="login()">Login</button>&nbsp;
+                </div>
+                <div class="col-md-4"><button mat-raised-button color="primary" (click)="signup()">Sign Up</button></div>
+            </div>
+        </div>
+    </div>
+    </div>
+</form>
+<div *ngIf="validRequest">
+    <p style="color:red">Invalid Username/Password</p>
+</div>

@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-10 pt-2">
+    <p>Welcome home !</p>
+  </div>
+  <div class="col-md-2 pt-2"><button mat-flat-button color="primary" (click)="logout()">Logout</button></div>
+</div>
+<div class="row">
+  <button mat-flat-button color="primary" (click)="getUserProfile()">Get Users Register</button>
+</div>
+<div class="row pt-5">
+  <div class="col-md-6"></div>
+  <div class="col-md-6">
+
+  </div>
+</div>
+<div *ngIf="response.length > 0" class="row">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">User</th>
+        <th scope="col">Area Pincode</th>
+        <th scope="col">Phone Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of response; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ customer.name}}</td>
+        <td>{{ customer.pincode }}</td>
+        <td>{{ customer.phonenumber }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
