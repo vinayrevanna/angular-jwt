@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     if (!this.authapi.isTokenExpired()) {
       console.log('token expired, Regenerating')
       const reqBody = { refJwt: this.authapi.getRefreshToken().toString() };
-      this.authapi.validateRefToken(reqBody).subscribe(data => {
+      this.authapi.validateRefToken().subscribe(data => {
         this.authapi.setTokens(data);
         this.getUserData();
       }, err => {
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
       this.response = data;
     },
       err => {
-        console.log(err);
+        //console.log(err);
       });
   }
 

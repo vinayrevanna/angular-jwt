@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './core/interceptor/auth-interceptor.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     SignupComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

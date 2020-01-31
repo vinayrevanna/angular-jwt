@@ -76,15 +76,16 @@ export class AuthService {
     localStorage.removeItem("ref_access");
   }
 
-  validateRefToken(objectBody){
-    const body = JSON.stringify(objectBody);
+  validateRefToken(){
+
+    const body = JSON.stringify(this.getRefreshToken());
     const httpOptions = {
       headers: new HttpHeaders({
          'Content-Type': 'application/json'
       }), observe: 'response' as 'body'
     };
     return this.http
-      .post(this.serverUrl + "/refreshToken", body, httpOptions)
+      .post(this.serverUrl + '/refreshToken', body, httpOptions)
       .pipe(catchError(this.handleError));
   }
 
