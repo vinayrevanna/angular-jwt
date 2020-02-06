@@ -17,7 +17,7 @@ export class AuthInterceptorService implements HttpInterceptor {
 
   intercept(request, next: HttpHandler) {
     const regExp = new RegExp('.*\/authenticate$|.*\/signUp$|^.*\/refreshToken');
-    if (!regExp.test(request.url) && request.method === 'POST' && request.method === 'GET') {
+    if (!regExp.test(request.url)) {
       return this.nextHandler(this.addTokenHeaders(request), next);
     } else {
     return this.nextHandler(request, next);
@@ -38,6 +38,7 @@ export class AuthInterceptorService implements HttpInterceptor {
             return this.handle401Error(request, next);
           } else {
             console.log('Some Error in interceptor');
+            //return this.handle401Error(request, next);
             console.log(error);
           }
           return throwError(error);
